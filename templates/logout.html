@@ -1,0 +1,7 @@
+from flask import redirect, session
+from werkzeug import Response
+
+
+def logout() -> Response:
+    session.pop('username', None)
+    return redirect('/login')

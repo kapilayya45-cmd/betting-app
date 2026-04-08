@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome {{ username }} 🎉</h2>
+
+    <p>Your Coins: 💰 {{ coins }}</p>
+
+    <a href="/bet">Place Bet 🎯</a>
+</body>
+</html>
+@app.route('/dashboard/<username>')
+def dashboard(username):
+    coins = users[username]['coins']
+    return render_template('dashboard.html', username=username, coins=coins)
+    <a href="/bet/{{ username }}">Place Bet 🎯</a>
+    @app.route('/dashboard')
+def dashboard():
+    if 'username' not in session:
+        return redirect('/login')
+
+    username = session['username']
+    coins = users[username]['coins']
+
+    return render_template('dashboard.html', username=username, coins=coins)
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome {{ username }} 🎉</h2>
+
+    <p>Your Coins: 💰 {{ coins }}</p>
+
+    <a href="/bet">Place Bet 🎯</a><br><br>
+
+    <!-- 🔥 Logout button -->
+    <a href="/logout">Logout 🚪</a>
+</body>
+</html>
+conn = sqlite3.connect('users.db')
+c = conn.cursor()
+
+c.execute("SELECT coins FROM users WHERE username=?", (username,))
+coins = c.fetchone()[0]
+
+conn.close()
+<h2>Welcome {{ username }}</h2>
+<p>Coins: {{ coins }}</p>
+
+<a href="/bet">Bet</a><br><br>
+<a href="/logout">Logout</a>

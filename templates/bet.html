@@ -1,0 +1,64 @@
+@app.route('/bet', methods=['GET', 'POST'])
+def bet():
+    if request.method == 'POST':
+        username = request.form['username']
+        amount = int(request.form['amount'])
+
+        if username not in users:
+            return "User not found ❌"
+
+        if users[username]['coins'] < amount:
+            return "Not enough coins ❌"
+
+        result = random.choice(["win", "lose"])
+
+        if result == "win":
+            users[username]['coins'] += amount
+        else:
+            users[username]['coins'] -= amount
+
+        # 🔥 redirect to dashboard
+        return redirect(url_for('dashboard', username=username))
+
+    return render_template('bet.html')
+    <form method="POST">
+    <input type="number" name="amount" placeholder="Bet Amount"><br><br>
+    <button type="submit">Place Bet</button>
+</form>
+@app.route('/bet', methods=['GET', 'POST'])
+def bet():
+    if 'username' not in session:
+        return redirect('/login')
+
+    username = session['username']
+
+    if request.method == 'POST':
+        amount = int(request.form['amount'])
+
+        if users[username]['coins'] < amount:
+            return "Not enough coins ❌"
+
+        result = random.choice(["win", "lose"])
+
+        if result == "win":
+            users[username]['coins'] += amount
+        else:
+            users[username]['coins'] -= amount
+
+        return redirect('/dashboard')
+
+    return render_template('bet.html')
+    new_coins = users_coins_after_bet
+
+conn = sqlite3.connect('users.db')
+c = conn.cursor()
+
+c.execute("UPDATE users SET coins=? WHERE username=?", (new_coins, username))
+
+conn.commit()
+conn.close()
+<h2>Place Bet</h2>
+<form method="POST">
+<input type="number" name="amount" placeholder="Amount"><br>
+<button>Bet</button>
+</form>
