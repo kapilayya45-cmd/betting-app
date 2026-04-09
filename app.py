@@ -70,7 +70,7 @@ def login():
 
         if user:
             session['username'] = username
-            return redirect('/dashboard')
+        return render_template('result.html', result=result, coins=coins)
         else:
             return "Invalid login ❌"
 
