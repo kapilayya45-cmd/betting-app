@@ -5,3 +5,4 @@ from werkzeug import Response
 def logout() -> Response:
     session.pop('username', None)
     return redirect('/login')
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
