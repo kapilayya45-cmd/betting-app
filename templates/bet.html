@@ -1,14 +1,5 @@
-<div class="container">
-<h2>🪙 Coin Flip</h2>
+amount = int(request.form.get('amount', 0))
+choice = request.form.get('choice')
 
-<form method="POST">
-<input type="number" name="amount" placeholder="Coins"><br>
-
-<select name="choice">
-<option value="heads">Heads</option>
-<option value="tails">Tails</option>
-</select><br><br>
-
-<button>Flip 🚀</button>
-</form>
-</div>
+if amount <= 0:
+    return "Enter valid amount ❌"
