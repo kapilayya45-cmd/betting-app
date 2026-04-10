@@ -1,50 +1,26 @@
-@app.route('/bet', methods=['GET', 'POST'])
-def bet():
-    if 'username' not in session:
-        return redirect('/login')
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coin Flip</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
 
-    username = session['username']
+<div class="container">
+    <h2>🪙 Coin Flip Game</h2>
 
-    if request.method == 'POST':
-        try:
-            amount = int(request.form.get('amount', 0))
-            choice = request.form.get('choice')
+    <form method="POST">
+        <input type="number" name="amount" placeholder="Enter coins" required><br>
 
-            if amount <= 0:
-                return "Enter valid amount ❌"
+        <select name="choice" required>
+            <option value="">Select</option>
+            <option value="heads">Heads</option>
+            <option value="tails">Tails</option>
+        </select><br><br>
 
-            conn = sqlite3.connect('users.db')
-            c = conn.cursor()
+        <button type="submit">Flip Coin 🚀</button>
+    </form>
+</div>
 
-            c.execute("SELECT coins FROM users WHERE username=?", (username,))
-            data = c.fetchone()
-
-            if not data:
-                conn.close()
-                return "User not found ❌"
-
-            coins = data[0]
-
-            if coins < amount:
-                conn.close()
-                return "Not enough coins ❌"
-
-            flip = random.choice(["heads", "tails"])
-
-            if choice == flip:
-                coins += amount
-                result = "win"
-            else:
-                coins -= amount
-                result = "lose"
-
-            c.execute("UPDATE users SET coins=? WHERE username=?", (coins, username))
-            conn.commit()
-            conn.close()
-
-            return render_template('result.html', result=result, coins=coins, flip=flip)
-
-        except Exception as e:
-            return f"Error: {str(e)} ❌"
-
-    return render_template('bet.html')
+</body>
+</html>
