@@ -5,95 +5,22 @@ body {
     text-align: center;
 }
 
-h1, h2 {
-    margin-top: 20px;
+.container {
+    width: 300px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background: #1e2a38;
+    border-radius: 12px;
 }
 
-form {
-    margin-top: 20px;
-}
-
-input {
+button {
     padding: 10px;
-    margin: 10px;
     border-radius: 8px;
-    border: none;
-}
-
-button {
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
     background: #00c6ff;
     color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #0072ff;
-}
-
-a {
-    color: #00c6ff;
-    text-decoration: none;
-}
-
-.container {
-    width: 300px;
-    margin: auto;
-    margin-top: 50px;
-    padding: 20px;
-    background: #1e2a38;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-button {
-    padding: 10px 20px;
-    border-radius: 8px;
     border: none;
-    background: #00c6ff;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
-button:hover {
-    background: #0072ff;
-    transform: scale(1.1);
-}
-.container {
-    width: 300px;
-    margin: auto;
-    margin-top: 50px;
-    padding: 20px;
-    background: #1e2a38;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    transition: 0.3s;
-}
-
-.container:hover {
-    transform: translateY(-10px);
-}
-.win {
-    color: lightgreen;
-    animation: pop 0.5s ease;
-}
-
-.lose {
-    color: red;
-    animation: shake 0.5s;
-}
-
-@keyframes pop {
-    0% {transform: scale(0.5);}
-    100% {transform: scale(1);}
-}
-
-@keyframes shake {
-    0% {transform: translateX(0);}
-    25% {transform: translateX(-5px);}
-    50% {transform: translateX(5px);}
-    75% {transform: translateX(-5px);}
-    100% {transform: translateX(0);}
-}
+.win { color: lightgreen; }
+.lose { color: red; }
