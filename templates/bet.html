@@ -1,5 +1,6 @@
-amount = int(request.form.get('amount', 0))
-choice = request.form.get('choice')
+if request.method == 'POST':
+    amount = int(request.form.get('amount', 0))
+    choice = request.form.get('choice')
 
-if amount <= 0:
-    return "Enter valid amount ❌"
+    if amount <= 0:
+        return "Enter valid amount ❌"
