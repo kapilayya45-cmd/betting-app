@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Coin Flip</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-
 <div class="container">
-    <h2>🪙 Coin Flip Game</h2>
+<h2>🪙 Coin Flip</h2>
 
-    <form method="POST">
-        <input type="number" name="amount" placeholder="Enter coins"><br>
+<form method="POST">
+<input type="number" name="amount" placeholder="Coins"><br>
 
-        <select name="choice">
-            <option value="heads">Heads</option>
-            <option value="tails">Tails</option>
-        </select><br><br>
+<select name="choice">
+<option value="heads">Heads</option>
+<option value="tails">Tails</option>
+</select><br><br>
 
-        <button>Flip Coin 🚀</button>
-    </form>
+<button>Flip 🚀</button>
+</form>
 </div>
-
-</body>
-</html>
